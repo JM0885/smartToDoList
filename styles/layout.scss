@@ -1,9 +1,210 @@
 // See: https://sass-lang.com/
 
 body {
-  background-color: #EEE;
+  background-color: rgb(10, 27, 176);
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
 
   h1 {
-    color: #244751;
+    color: #c8ecf3;
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Potta One', cursive;
+    margin-bottom: 0%;
   }
+
+
+  @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+  *,
+  *::before,
+  *::after {
+    margin: 1;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .card {
+    margin: 1.5rem;
+    width: 500px;
+    height: 700px;
+    padding: .5rem 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 14px 32px 4px rgba(black, .2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    background-image: linear-gradient(240deg, rgb(220, 221, 231), #f1e20a);
+    min-height: 70%;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .dropdown {
+      padding-top: 0;
+    }
+
+    #categories {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      margin-top: 0;
+    } 
+
+    .list-title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    form {
+      display: flex;
+      padding: 10px 20px;
+    }
+
+    input[type=text], select {
+      width: 100%;
+      padding: 10px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .btn-task {
+      display: flex;
+      cursor: pointer;
+      background: 0;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      font-size: 1.5em;
+      padding-top: .5em;
+      margin-left: .5em;
+    }
+
+    .tasks {
+      width: 85%;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 18px;
+      margin: 6 px 0;
+      margin-bottom: 5px;
+      margin-top: 3px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .tasks i{
+      float: right;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    .tasks:hover {
+      transform: translateX(-3px);
+    }
+
+    .comptasks {
+      width: 85%;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 18px;
+      margin: 6 px 0;
+      margin-bottom: 5px;
+      margin-top: 3px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .comptasks i{
+      float: right;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    .comptasks:hover {
+      transform: translateX(-3px);
+    }
+  
+    .title {
+      color: white;
+      margin: 1rem;
+      padding: .5rem 1rem;
+      border-radius: 50px;
+      transition: .2s;
+      cursor: pointer;
+    }
+    
+    .desc {
+      text-align: center;
+    }
+    
+    .actions {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      
+      button {
+        padding: .5rem .8rem;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        text-transform: uppercase;
+        outline: 0;
+        transition: background-color .4s, color .4s, transform .1s;
+        
+        &:hover {
+          color: white;
+          box-shadow: 0 0 24px rgba(black, .2);
+        }
+        
+        &:active {
+          transform: scale(0.95);
+          box-shadow: 0 0 16px rgba(black, .3);
+        }
+      }
+      
+      &__like {
+        &:hover {
+          background-color: #00b16a;
+        }
+      }
+      
+          &__cancel {
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  
+  p {
+    margin-top: 1rem;
+    color: #000000;
+  }
+  
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: #2574a9;
+  }
+  
+  .active {
+    background-color: #00b16a;
+  }
+  
+  
+  
+  button::-moz-focus-inner {
+    border: 0;
+  }
+
+}
 }
