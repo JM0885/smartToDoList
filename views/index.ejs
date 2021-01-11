@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+
+    <title>toodle</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -12,6 +14,36 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <h1>toodle</h1>
+
+    <div class="container">
+      <div class="card">
+        <h2>Add a New Task</h2>
+        <div class="title title--epic">Add Task</div>
+        <div class="desc">What do you want to accomplish?</div>
+        <form action="/">
+          <input type="text" id="addtask" name="addtask" placeholder="Add a task...">
+          <button class="btn-task" aria-label="create new task">+</button>
+          </form> 
+        <div class="actions">
+        </div>
+      </div>
+      <div class="card">
+        <h2>Task List</h2>
+        <div class="title title--legendary">To-Do List</div>
+        <div class="desc">You have (number of tasks) left to accomplish</div>
+          <div class="actions">
+        </div>
+      </div>
+      <div class="card">
+        <h2>Completed Tasks</h2>
+        <div class="title title--common">See All Tasks</div>
+        <div class="desc">What have you accomplished so far?</div>
+          <div class="actions">
+        </div>
+      </div>
+      </div>
+      </section>
+    </div>
   </body>
 </html>
