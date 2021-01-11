@@ -7,19 +7,54 @@
 
 const express = require('express');
 const router  = express.Router();
+const dbParams = require('../lib/db.js');
+
+
+
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+  router.get("/:id", (req, res) => {
+    db.query(`SELECT *
+    FROM users
+    WHERE id = $1`, [req.params.id])
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        const user = data.rows[0];
+        res.json(user);
       })
       .catch(err => {
+        console.log(err);
         res
           .status(500)
           .json({ error: err.message });
       });
   });
+
   return router;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
