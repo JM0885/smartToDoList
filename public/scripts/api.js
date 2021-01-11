@@ -8,7 +8,7 @@ const ombdKey = process.env.OMDB_KEY;
 //-----------------------------------------------------------------
 
 //fetches tv show information, STATUS: WORKING!
-const fetchShow = function(testInput) {
+const fetchShow = function(testInput, cb) {
   const showInfo = {
     method: 'GET',
     url: `http://api.tvmaze.com/singlesearch/shows?q=${testInput}`
@@ -18,14 +18,14 @@ const fetchShow = function(testInput) {
   request(showInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
-    return body;
+    cb(body);
   });
 };
 
 //-------------------------------------------------------------------
 
 //fetches restaurant information, STATUS:WORKING!
-const fetchRestaurant = function(testInput) {
+const fetchRestaurant = function(testInput, cb) {
   const restaurantInfo = {
     method: 'GET',
     url: `https://developers.zomato.com/api/v2.1/locations?query=${testInput}`,
@@ -34,14 +34,14 @@ const fetchRestaurant = function(testInput) {
   request(restaurantInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
-    return body;
+    cb(body);
   });
 };
 
 //------------------------------------------------------------------
 
 //fetches books information, STATUS: WORKING! NEEDS LIMIT
-const fetchBook = function(testInput) {
+const fetchBook = function(testInput, cb) {
   const url = `http://openlibrary.org/search.json?q=${testInput}`; // limit!!!
 
   const bookInfo = {
@@ -53,14 +53,14 @@ const fetchBook = function(testInput) {
   request(bookInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
-    return body;
+    cb(body);
   });
 };
 
 //---------------------------------------------------------------------
 
 //fetches movies information, STATUS: WORKING!
-const fetchMovie = function(testInput) {
+const fetchMovie = function(testInput, cb) {
   const movieInfo = {
     method: 'GET',
     url: `http://www.omdbapi.com/?t=${testInput}&apikey=${ombdKey}`
@@ -68,12 +68,14 @@ const fetchMovie = function(testInput) {
   request(movieInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
-    return body;
+    cb(body);
   });
 };
 
 //---------------------------------------------------------------------
 
+//test functionality:
+//fetchRestaurant(testInput, info => {console.log(info)});
 
 module.exports = {
   fetchShow,
