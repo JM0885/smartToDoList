@@ -23,19 +23,6 @@ body {
     box-sizing: inherit;
   }
   
-  body {
-    height: 100vh;
-    
-    box-sizing: border-box;
-    font-family: 'Roboto', 'Sans-serif';
-    background-color: whitesmoke;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
   .container {
     display: flex;
     justify-content: center;
@@ -55,14 +42,28 @@ body {
     justify-content: center;
     align-items: center;
     transition: .2s;
-    border-radius: 4px;
-    border-color: #8c14fc;
-
+    background-image: linear-gradient(240deg, rgb(220, 221, 231), #f1e20a);
+    min-height: 70%;
 
     &:hover {
       transform: translateY(-5px);
     }
 
+    .dropdown {
+      padding-top: 0;
+    }
+
+    #categories {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      margin-top: 0;
+    } 
+
+    .list-title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
     form {
       display: flex;
       padding: 10px 20px;
@@ -89,6 +90,49 @@ body {
       padding-top: .5em;
       margin-left: .5em;
     }
+
+    .tasks {
+      width: 85%;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 18px;
+      margin: 6 px 0;
+      margin-bottom: 5px;
+      margin-top: 3px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .tasks i{
+      float: right;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    .tasks:hover {
+      transform: translateX(-3px);
+    }
+
+    .comptasks {
+      width: 85%;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 18px;
+      margin: 6 px 0;
+      margin-bottom: 5px;
+      margin-top: 3px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .comptasks i{
+      float: right;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    .comptasks:hover {
+      transform: translateX(-3px);
+    }
   
     .title {
       color: white;
@@ -97,28 +141,6 @@ body {
       border-radius: 50px;
       transition: .2s;
       cursor: pointer;
-      
-      &--legendary {
-        background-color: #f4d03f;
-        &:hover {
-          box-shadow: 0 0 12px rgba(#f4d03f, .8);
-        }
-      }
-      
-          &--epic {
-        background-color: #8c14fc;
-        &:hover {
-          box-shadow: 0 0 12px rgba(#8c14fc, .8);
-        }
-      }
-      
-          &--common {
-        background-color: #2ecc71;
-        &:hover {
-          box-shadow: 0 0 12px rgba(#2ecc71, .8);
-        }
-      }
-      
     }
     
     .desc {
@@ -166,7 +188,7 @@ body {
   
   p {
     margin-top: 1rem;
-    color: #484848;
+    color: #000000;
   }
   
   a:link,
