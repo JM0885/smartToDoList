@@ -42,16 +42,28 @@ body {
     justify-content: center;
     align-items: center;
     transition: .2s;
-    background-image: linear-gradient(120deg, rgb(10, 27, 176), #cca7a7);
+    background-image: linear-gradient(240deg, rgb(220, 221, 231), #f1e20a);
     min-height: 70%;
 
     &:hover {
       transform: translateY(-5px);
     }
 
+    .dropdown {
+      padding-top: 0;
+    }
+
+    #categories {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      margin-top: 0;
+    } 
+    
+
     .list-title {
       display: flex;
       justify-content: center;
+      margin-bottom: 10px;
     }
     form {
       display: flex;
