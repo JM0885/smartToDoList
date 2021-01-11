@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -19,28 +20,56 @@
     <div class="container">
       <div class="card">
         <h2>Add a New Task</h2>
-        <div class="title title--epic">Add Task</div>
         <div class="desc">What do you want to accomplish?</div>
         <form action="/">
-          <input type="text" id="addtask" name="addtask" placeholder="Add a task...">
+          <input type="text" id="addtask" name="addtask" placeholder="Write a new task here...">
           <button class="btn-task" aria-label="create new task">+</button>
           </form> 
         <div class="actions">
         </div>
       </div>
       <div class="card">
-        <h2>Task List</h2>
-        <div class="title title--legendary">To-Do List</div>
-        <div class="desc">You have (number of tasks) left to accomplish</div>
+        <div class="todo-header">
+            <h2 class="list-title">Task List</h2>
+            <p class="desc">You have 3 tasks left to accomplish</p>
+          </div>
+            <div class="tasks">
+                Run a half-marathon
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="tasks">
+                Eat at Biera
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="tasks">
+                Pay EPCOR bill
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-check"></i>
+            </div>
           <div class="actions">
-        </div>
+        </div>  
       </div>
       <div class="card">
-        <h2>Completed Tasks</h2>
-        <div class="title title--common">See All Tasks</div>
-        <div class="desc">What have you accomplished so far?</div>
+        <div class="todo-header">
+            <h2 class="list-title">Completed Tasks</h2>
+            <p class="desc">See what you've accomplished!</p>
+          </div>
+            <div class="comptasks">
+                Run a half-marathon
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            <div class="comptasks">
+                Eat at Biera
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            <div class="comptasks">
+                Pay EPCOR bill
+                <i class="fas fa-trash-alt"></i>
+            </div>
           <div class="actions">
-        </div>
+        </div>  
       </div>
       </div>
       </section>
