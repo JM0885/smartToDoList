@@ -17,78 +17,79 @@
   <body>
     <h1>toodle</h1>
 
+    <!-- Add Task List -->
     <div class="container">
       <div class="card">
-        <h2>Add a New Task</h2>
-        <div class="desc">What do you want to accomplish?</div>
-        <form action="/">
-          <input type="text" id="addtask" name="addtask" placeholder="Write a new task here...">
+        <div class="todo-header">
+        <h2 class="list-title">Add a New Task</h2>
+
+    <!-- dropdown list to filter list by category -->
+      <div class="dropdown">
+        <select id="categories" name="categories">
+          <option value="" selected disabled hidden>Select a category</option>
+          <option value="to_eat">To Eat</option>
+          <option value="to_watch">To Watch</option>
+          <option value="to_read">To Read</option>
+        </select>
+      </div>
+    <!-- end dropdown list -->
+
+        <p class="desc">What do you want to accomplish?</p>
+      </div>
+        <form>
+          <input type="text" id="task_input" name="addtask" placeholder="Write a new task here...">
           <button class="btn-task" aria-label="create new task">+</button>
           </form>
-        <div class="actions">
-        </div>
       </div>
-      <div class="card">
-        <div class="todo-header">
-            <h2 class="list-title">Task List</h2>
-            <div class="dropdown">
-                <select id="categories" name="categories">
-                  <option value="" selected disabled hidden>Filter by category</option>
-                  <option value="to_eat">To Eat</option>
-                  <option value="to_watch">To Watch</option>
-                  <option value="to_read">To Read</option>
-                </select>
-            </div>
-            <p class="desc">You have 3 tasks left to accomplish</p>
-          </div>
-            <div class="tasks">
-                Run a half-marathon
-                <i class="fas fa-trash-alt"></i>
-                <i class="fas fa-check"></i>
-            </div>
-            <div class="tasks">
-                Eat at Biera
-                <i class="fas fa-trash-alt"></i>
-                <i class="fas fa-check"></i>
-            </div>
-            <div class="tasks">
-                Pay EPCOR bill
-                <i class="fas fa-trash-alt"></i>
-                <i class="fas fa-check"></i>
-            </div>
-          <div class="actions">
-        </div>
+
+    <!-- Task List -->
+
+    <div class="card">
+      <div class="todo-header">
+        <h2 class="list-title">Task List</h2>
+      <!-- dropdown list to filter list by category -->
+      <div class="dropdown">
+        <select id="categories" name="categories">
+          <option value="" selected disabled hidden>All categories</option>
+          <option value="to_eat">To Eat</option>
+          <option value="to_watch">To Watch</option>
+          <option value="to_read">To Read</option>
+        </select>
       </div>
-      <div class="card">
-        <div class="todo-header">
-            <h2 class="list-title">Completed Tasks</h2>
-            <div class="dropdown">
-              <select id="categories" name="categories">
-                <option value="" selected disabled hidden>Filter by category</option>
-                <option value="to_eat">To Eat</option>
-                <option value="to_watch">To Watch</option>
-                <option value="to_read">To Read</option>
-              </select>
-          </div>
-            <p class="desc">See what you've accomplished!</p>
-          </div>
-            <div class="comptasks">
-                Run a half-marathon
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="comptasks">
-                Eat at Biera
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="comptasks">
-                Pay EPCOR bill
-                <i class="fas fa-trash-alt"></i>
-            </div>
-          <div class="actions">
-        </div>
-      </div>
-      </div>
-      </section>
+      <!-- end dropdown list -->
+      
+      <p class="desc">You have 3 tasks left to accomplish</p>
     </div>
+        <div class="tasks">
+          task
+            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-check"></i>
+        </div>
+      </div>
+
+      <!-- Completed Tasks List -->
+      <div class="card">
+        <div class="todo-header">
+          <h2 class="list-title">Completed Tasks</h2>
+      <!-- dropdown list to filter list by category -->
+      <div class="dropdown">
+        <select id="categories" name="categories">
+          <option value="" selected disabled hidden>All categories</option>
+          <option value="to_eat">To Eat</option>
+          <option value="to_watch">To Watch</option>
+          <option value="to_read">To Read</option>
+        </select>
+      </div>
+      <!-- end dropdown list -->
+
+      <p class="desc">See what you've accomplished!</p>
+      </div>
+      <div class="comptasks">
+        task          
+        <i class="fas fa-trash-alt"></i>
+      </div>
+      </div>
+    </div>
+   </section>
   </body>
 </html>
