@@ -13,20 +13,6 @@ const dbParams = require('../lib/db.js');
 
 
 module.exports = (db) => {
-  // router.get("/:id", (req, res) => {
-  //   db.query(`SELECT *
-  //   FROM users
-  //   WHERE id = $1`, [req.params.id])
-  //     .then(data => {
-  //       const user = data.rows[0];
-  //       res.json(user);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
   router.post('/', (req, res)=>{
     const newTodo = req.body.todo_title;
     db.query(`
