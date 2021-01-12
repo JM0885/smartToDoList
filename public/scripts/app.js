@@ -1,11 +1,12 @@
+
 /*jquery 4 step process
 1. target:
 2. addEventListener
 3(optional) Retarget:
 4. Effect
-
-
 */
+
+
 $(() => {
   //target
   $('#newTask').submit(function(event) {
@@ -25,5 +26,3 @@ $(() => {
     });
   })
 });
-
-
