@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(() => {
   $.ajax({
     method: "GET",
@@ -10,6 +11,13 @@ $(() => {
 });
 
 //append new task input to task list
+=======
+/*jquery 4 step process
+1. target:
+2. addEventListener
+3(optional) Retarget:
+4. Effect
+>>>>>>> 74d3e527ba439a6d06a0509028f42aabc9a1f42e
 
 $(document).ready(function () {
 $("#task_input").on('input', function(){
@@ -21,6 +29,7 @@ $("#task_input").on('input', function(){
   });
 });
 
+<<<<<<< HEAD
 $(".btn-task").on('input', function(){
   if(keyCode == 13 && $(".btn-task").val() != "")
   {
@@ -28,3 +37,27 @@ $(".btn-task").on('input', function(){
     $(".tasks").append(task);
     }
   });
+=======
+*/
+$(() => {
+  //target
+  $('#newTask').submit(function(event) {
+    event.preventDefault();
+    console.log($('#addtask').val());
+    const addTitle = $('#addtask').val();
+    $.ajax({
+      type: "POST",
+      url: "/home",
+      data: {todo_title: addTitle},
+      success: function(res) {
+        console.log(res);
+        console.log("Sucess!");
+    }
+    }).done((user) => {
+      console.log(user);
+    });
+  })
+});
+
+
+>>>>>>> 74d3e527ba439a6d06a0509028f42aabc9a1f42e
