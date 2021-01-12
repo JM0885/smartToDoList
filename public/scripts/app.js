@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(() => {
   $.ajax({
     method: "GET",
@@ -9,26 +10,22 @@ $(() => {
 
   });
 });
-
-//append new task input to task list
 =======
+>>>>>>> ba5ae02d5e2e838e1f9207c6132d737460388555
+
 /*jquery 4 step process
 1. target:
 2. addEventListener
 3(optional) Retarget:
 4. Effect
+<<<<<<< HEAD
 >>>>>>> 74d3e527ba439a6d06a0509028f42aabc9a1f42e
+=======
+*/
+>>>>>>> ba5ae02d5e2e838e1f9207c6132d737460388555
 
-$(document).ready(function () {
-$("#task_input").on('input', function(){
-  if(keyCode == 13 && $("#task_input").val() != "")
-  {
-    let task = $("<div class='task_input'></div>").text($("#addtask").val());
-    $(".tasks").append(task);
-    } 
-  });
-});
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 $(".btn-task").on('input', function(){
   if(keyCode == 13 && $(".btn-task").val() != "")
@@ -39,6 +36,8 @@ $(".btn-task").on('input', function(){
   });
 =======
 */
+=======
+>>>>>>> ba5ae02d5e2e838e1f9207c6132d737460388555
 $(() => {
   //target
   $('#newTask').submit(function(event) {
@@ -58,6 +57,9 @@ $(() => {
     });
   })
 });
+<<<<<<< HEAD
 
 
 >>>>>>> 74d3e527ba439a6d06a0509028f42aabc9a1f42e
+=======
+>>>>>>> ba5ae02d5e2e838e1f9207c6132d737460388555
