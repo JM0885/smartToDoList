@@ -1,19 +1,14 @@
 const express = require('express');
-const app = express();
+const router  = express.Router();
 
 
-//install cookie-session?
-const cookieSession = require('cookie-session');
-app.use(cookieSession({
-  name: 'session',
-  keys: ['onekey']
-}));
+//function route to hacked login
+module.exports = (db) => {
+  router.get('/:id', (req, res) => {
+    console.log("LOGIN SUCCESS", req.session);
+    req.session.user_id = req.params.id;
+    res.redirect('/');
+  })
 
-
-//route to hacked login
-app.get('/login/:id', (req, res) => {
-  console.log(req.session);
-  req.session.user_id = req.params.id;
-  res.redirect('/');
-});
-
+  return router;
+};
