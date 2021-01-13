@@ -42,9 +42,9 @@ app.use(express.static("public"));
 const indexRoutes = require('./routes/index.js');
 const loginRoute = require('./routes/login.js');
 
+
 //"/home" path prefeix
 app.use("/home", indexRoutes(db));
-app.use('/login', loginRoute(db));
 
 // Home page
 app.get("/", (req, res) => {
@@ -57,6 +57,12 @@ app.get("/", (req, res) => {
   const templateVars = { userId };
   res.render("index", templateVars);
 });
+
+// module.exports = renderTaskElm = (task) => {
+//   const taskList = $('.tasks');
+//   taskList.append(createTaskElement(task));
+//   taskList.children('.task:last-child').data(task);
+// };
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

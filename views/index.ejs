@@ -35,7 +35,7 @@
 
     <!-- dropdown list to filter list by category -->
       <div class="dropdown">
-        <select id="categories" name="categories">
+        <select id="categoriesCard1" name="categories">
           <option value="" selected disabled hidden>Select a category</option>
           <option value="to_eat">To Eat</option>
           <option value="to_watch">To Watch</option>
@@ -46,10 +46,9 @@
 
         <p class="desc">What do you want to accomplish?</p>
       </div>
-        <form>
-          <input type="text" id="task_input" name="addtask" placeholder="Write a new task here..." 
-          action="/" method="POST" id="newTask">
-          <button class="btn-task" aria-label="create new task">+</button>
+      <form action="/" id = "newTask">
+        <input type="text" id="addTask" name="addtask" placeholder="Write a new task here...">
+        <button class="btn-task" aria-label="create new task">+</button>
         </form>
       </div>
 
@@ -68,14 +67,16 @@
         </select>
       </div>
       <!-- end dropdown list -->
-      
+
       <p class="desc">You have 3 tasks left to accomplish</p>
     </div>
-        <div class="tasks">
+      <article class="todosTitle">
+        <!-- <div class="tasks" id='title'>
           task
             <i class="fas fa-trash-alt"></i>
             <i class="fas fa-check"></i>
-        </div>
+        </div> -->
+      </article>
       </div>
 
       <!-- Completed Tasks List -->
@@ -96,7 +97,7 @@
       <p class="desc">See what you've accomplished!</p>
       </div>
       <div class="comptasks">
-        task          
+        task
         <i class="fas fa-trash-alt"></i>
       </div>
       </div>
