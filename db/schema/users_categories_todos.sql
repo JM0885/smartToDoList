@@ -6,9 +6,7 @@ password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE categories(
-id SERIAL PRIMARY KEY,
-user_id INTEGER,
-FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+id SERIAL PRIMARY KEY NOT NULL,
 title VARCHAR(255)
 );
 
@@ -21,5 +19,6 @@ FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
 title VARCHAR(255),
 start_date TIMESTAMP,
 end_date TIMESTAMP,
-accomplished BOOLEAN
+accomplished BOOLEAN,
+api_id VARCHAR(255)
 );
