@@ -34,13 +34,19 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 const indexRoutes = require('./routes/index.js');
 
+
 //"/home" path prefeix
 app.use("/home", indexRoutes(db));
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+// module.exports = renderTaskElm = (task) => {
+//   const taskList = $('.tasks');
+//   taskList.append(createTaskElement(task));
+//   taskList.children('.task:last-child').data(task);
+// };
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
