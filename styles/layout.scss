@@ -7,64 +7,30 @@ body {
 
   h1 {
     color: #c8ecf3;
-    text-align: center;
+    text-align: left;
     font-size: 48px;
+    margin-left: 2em;
     font-family: 'Potta One', cursive;
-    margin-bottom: 0%;
+    margin-top: 0;
+    margin-bottom: 1.5em;
   }
-
 // NAV BAR
 
-* {box-sizing: border-box;}
-
-/* Style the navbar */
-.topnav {
-  overflow: hidden;
-  background-color: none;
-}
-
-/* Navbar links */
-.topnav a {
-  float: left;
-  display: block;
-  color: rgb(247, 243, 243);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Navbar links on mouse-over */
-.topnav a:hover {
-  background-color: #c8ecf3;
-  color: black;
-}
-
-/* Active/current link */
-.topnav a.active {
-  background-color: #c8ecf3;
-  color: rgb(10, 10, 10);
-}
-
-/* Style the input container */
-.topnav .login-container {
+h4 {
   float: right;
-}
-
-/* Style the input field inside the navbar */
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
+  padding: 5px;
+  margin-top: 17px;
   font-size: 17px;
+  color: #c8ecf3;
   border: none;
-  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+  width: 250px; /* adjust as needed (as long as it doesn't break the topnav) */
 }
 
 /* Style the button inside the input container */
 .topnav .login-container button {
   float: right;
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 17px;
   margin-right: 16px;
   margin-left: 3px;
   background: #c8ecf3;
