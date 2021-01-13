@@ -75,7 +75,7 @@ const fetchMovie = function(testInput, cb) {
 //---------------------------------------------------------------------
 
 //test functionality:
-//fetchRestaurant(testInput, info => {console.log(info)});
+fetchShow(testInput, info => {console.log(info)});
 
 module.exports = {
   fetchShow,

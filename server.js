@@ -9,12 +9,19 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require('cookie-session');
+
 
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
-db.connect();
+db.connect(console.log('SUCCESS! YOU HAVE CONNECTED!'));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['onekey']
+}));
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -33,13 +40,22 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 const indexRoutes = require('./routes/index.js');
+const loginRoute = require('./routes/login.js');
 
 
 //"/home" path prefeix
 app.use("/home", indexRoutes(db));
+
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  const userId = req.session.user_id;
+  db.query(`
+  SELECT * FROM users
+  WHERE id = $1;
+  `, [userId])
+  .then((data) => console.log("HERE IS THE LOGIN", data.rows))
+  const templateVars = { userId };
+  res.render("index", templateVars);
 });
 
 // module.exports = renderTaskElm = (task) => {
@@ -51,7 +67,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-// const indexRoutes = require('./routes/index');
-// app.use('/', indexRoutes);
 
