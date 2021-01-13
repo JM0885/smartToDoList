@@ -45,6 +45,8 @@ const loginRoute = require('./routes/login.js');
 
 //"/home" path prefeix
 app.use("/home", indexRoutes(db));
+//"/login" path prefeix
+app.use('/login', loginRoute(db));
 
 // Home page
 app.get("/", (req, res) => {
