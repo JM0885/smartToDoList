@@ -10,8 +10,6 @@ $(() => {
   //target
   $('#newTask').submit(function(event) {
     event.preventDefault();
-
-    // console.log($('#addTask').val());
     const addTask = $('#addTask').val();
     $("#addTask").val("");
     const category = $('#categoriesCard1').val();
@@ -40,7 +38,7 @@ $(() => {
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`
-  return markup; 
+  return markup;
   }
 
   const createCompletedElement = function(objData) {
@@ -49,14 +47,13 @@ $(() => {
     ${objData.title}
       ${iconMarkup}
   </div>`
-  return markup; 
+  return markup;
   }
 
   const renderTitle = function(titles) {
     $(".todosTitle").empty();
     for (let i in titles) {
       $(".todosTitle").prepend(createTitleElement(titles[i]));
-      console.log(titles[i]);
     }
 };
 
@@ -66,7 +63,6 @@ $(() => {
       url: "/home",
       success: function(data) {
         renderTitle(data);
-        console.log(data);
       },
     });
   };
@@ -76,16 +72,12 @@ $(() => {
   $('#categoriesCard2').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
-    console.log("tasks", tasks);
     $(".todosTitle .tasks").each(function() {
       const category = $(this).attr("data-id");
-      console.log("THIS", this);
       if(category !== tasks){
           $(this).addClass("hidden");
-          console.log("Category hidden",category);
         }else{
           $(this).removeClass("hidden");
-          console.log("Category Not Hidden", category);
         }
       });
   })

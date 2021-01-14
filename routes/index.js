@@ -39,7 +39,7 @@ module.exports = (db) => {
     `,[addTask, category, start_date]);
     res.redirect('/');
 
-  //grabs title from todos table and loops through each title name
+
 })
 
 
