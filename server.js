@@ -74,6 +74,20 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 
+app.post('/complete/:id', (req, res) => {
+  db.query(`
+  UPDATE todos
+  SET end_date = NOW()
+  WHERE ID = ${req.params.id}
+  RETURNING *;
+  `).then((result) => {
+    res.json( result.rows[0] )
+  }).catch(err => {
+    res.json({ message: 'Update not completed.', errors: err })
+  });
+});
+
+
 app.post("")
 
 // module.exports = renderTaskElm = (task) => {
