@@ -54,15 +54,9 @@ $(() => {
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`
-<<<<<<< HEAD
   return markup;
   }
-=======
->>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
 
-    return markup;
-  }
-  
   const createCompletedElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="comptasks" data-id="${objData.category_id}">
@@ -78,10 +72,7 @@ $(() => {
       if (titles[i].end_date === null) {
         console.log("Executed1");
       $(".todosTitle").prepend(createTitleElement(titles[i]));
-<<<<<<< HEAD
-=======
       }
->>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
     }
 };
 
@@ -90,7 +81,6 @@ const renderCompleted = function(task) {
   console.log("Task " + task[0].end_date);
   for (let i in task) {
     if (task[i].end_date !== null) {
-      console.log("Executed");
     $(".completedTitle").prepend(createCompletedElement(task[i]));
     }
   }
@@ -102,11 +92,8 @@ const renderCompleted = function(task) {
       url: "/home",
       success: function (data) {
         renderTitle(data);
-<<<<<<< HEAD
-=======
         renderCompleted(data);
         console.log(data);
->>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
       },
     });
   };
@@ -119,9 +106,27 @@ const renderCompleted = function(task) {
   $('#categoriesCard2').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
+    console.log("TASKS;", tasks);
     $(".todosTitle .tasks").each(function() {
       const category = $(this).attr("data-id");
-      if(category !== tasks){
+      if(tasks === 'all'){
+        $(this).removeClass("hidden");
+      }else if (category !== tasks){
+          $(this).addClass("hidden");
+        }else{
+          $(this).removeClass("hidden");
+        }
+      });
+  })
+  $('#categoriesCard3').on('change',function(event) {
+    event.preventDefault();
+    const tasks = $('#categoriesCard3').val();
+    console.log("Tasks", tasks);
+    $(".completedTitle .comptasks").each(function() {
+      const category = $(this).attr("data-id");
+      if(tasks === 'all'){
+        $(this).removeClass("hidden");
+      }else if (category !== tasks){
           $(this).addClass("hidden");
         }else{
           $(this).removeClass("hidden");
