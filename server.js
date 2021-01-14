@@ -47,6 +47,7 @@ const loginRoute = require('./routes/login.js');
 app.use("/home", indexRoutes(db));
 //"/login" path prefeix
 app.use('/login', loginRoute(db));
+// app.use('/delete', indexRoutes(db));
 
 // Home page
 app.get("/", (req, res) => {
@@ -59,6 +60,21 @@ app.get("/", (req, res) => {
   const templateVars = { userId };
   res.render("index", templateVars);
 });
+
+
+app.delete('/delete/:id', (req, res) => {
+  db.query(`
+  DELETE FROM todos
+  WHERE ID = ${req.params.id};
+  `).then(() => {
+    res.json({ message: 'successfully deleted'})
+  }).catch(err => {
+    res.json({ message: 'ID failed to delete.', errors: err })
+  });
+});
+
+
+app.post("")
 
 // module.exports = renderTaskElm = (task) => {
 //   const taskList = $('.tasks');

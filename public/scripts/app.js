@@ -25,6 +25,7 @@ $(() => {
         start_date: start_date
       },
       success: function(res) {
+
         $(".todosTitle").html("");
           loadTitle();
     }
@@ -34,10 +35,9 @@ $(() => {
   })
 
   const createTitleElement = function(objData) {
-    console.log("objectData",objData.category_id);
-    const markup = `<div class="tasks" id='title' data-id="${objData.category_id}">
+
     ${objData.title}
-      <i class="fas fa-trash-alt"></i>
+      ${iconMarkup}
       <i class="fas fa-check"></i>
   </div>`
   return markup;
@@ -48,7 +48,7 @@ $(() => {
     for (let i in titles) {
       $(".todosTitle").prepend(createTitleElement(titles[i]));
     }
-  };
+
 
   const loadTitle = () => {
     $.ajax({
@@ -60,22 +60,3 @@ $(() => {
     });
   };
 
-  loadTitle();
-
-
-
-  $('#categoriesCard2').on('change',function(event) {
-    event.preventDefault();
-    const tasks = $('#categoriesCard2').val();
-      $(".todosTitle .tasks").each(function() {
-        const category = $(this).attr("data-id");
-        $(this).removeClass("hidden");
-        if(category !== tasks){
-          $(this).addClass("hidden");
-        }
-      });
-  })
-
-
-
-});

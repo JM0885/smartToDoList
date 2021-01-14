@@ -16,6 +16,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const todos = data.rows;
+        console.log(todos);
         res.json({ todos });
       })
       .catch(err => {
@@ -24,5 +25,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
+
+  // router.post("/home/:id", ())
+
+  // return router;
 };

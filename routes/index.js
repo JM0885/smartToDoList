@@ -42,9 +42,10 @@ module.exports = (db) => {
   //grabs title from todos table and loops through each title name
 })
 
-router.get('/', (req, res)=>{
+
+router.get('/', (req, res)=> {
     db.query(`
-    SELECT *
+
     FROM todos
     `).then((data)=>{
       const title = data.rows;
@@ -56,24 +57,4 @@ router.get('/', (req, res)=>{
 
   return router;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
