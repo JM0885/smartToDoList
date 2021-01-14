@@ -40,7 +40,16 @@ $(() => {
     const markup = `<div class="tasks" data-id="${objData.category_id}">
     ${objData.title}
       ${iconMarkup}
-      <i class="fas fa-check"></i>
+      <i data-id="${objData.id}" class="fas fa-check"></i>
+  </div>`
+  return markup; 
+  }
+
+  const createCompletedElement = function(objData) {
+    const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
+    const markup = `<div class="comptasks" data-id="${objData.category_id}">
+    ${objData.title}
+      ${iconMarkup}
   </div>`
   return markup; 
   }
@@ -95,6 +104,23 @@ $(() => {
     }).then((res) => {
       const element = $(this).parent()
       element.remove();
+    }).catch(err => {
+      console.log("Error, item not removed.", err);
+    });
+  });
+
+  //completed task
+  $(document).on('click', '.fa-check', function(e) {
+    e.preventDefault();
+
+    const id = $(e.target).attr('data-id');
+    $.ajax({
+    url: `/complete/${id}`,
+    method: 'POST',
+    }).then((task) => {
+      const element = $(this).parent()
+      element.remove();
+      $(".completedTitle").prepend(createCompletedElement(task));
     }).catch(err => {
       console.log("Error, item not removed.", err);
     });

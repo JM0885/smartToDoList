@@ -144,7 +144,15 @@ h4 {
     }
 
     .todosTitle {
-      width:90%;
+      width:100%;
+      background: none;
+      padding: 0;
+      margin: 0;
+      overflow: scroll;
+    }
+
+    .completedTitle {
+      width:100%;
       background: none;
       padding: 0;
       margin: 0;
