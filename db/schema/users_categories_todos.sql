@@ -1,3 +1,8 @@
+DROP TABLE todos;
+DROP TABLE categories;
+DROP TABLE users;
+
+
 CREATE TABLE users(
 id SERIAL PRIMARY KEY NOT NULL,
 name VARCHAR(255) NOT NULL,
@@ -20,5 +25,7 @@ title VARCHAR(255),
 start_date TIMESTAMP,
 end_date TIMESTAMP,
 accomplished BOOLEAN,
-api_id VARCHAR(255)
+api_id VARCHAR(255),
+img_url VARCHAR(255),
+info_url VARCHAR(255)
 );
