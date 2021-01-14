@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const dbParams = require('../lib/db.js');
+
 
 
 module.exports = (db) => {
@@ -44,7 +44,8 @@ module.exports = (db) => {
 
 
 router.get('/', (req, res)=> {
-    db.query(`SELECT id, title
+    db.query(`
+    SELECT *
     FROM todos
     `).then((data)=>{
       const title = data.rows;
