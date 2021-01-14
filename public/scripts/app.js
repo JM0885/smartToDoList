@@ -25,13 +25,11 @@ $(() => {
         start_date: start_date
       },
       success: function(res) {
-        // console.log(res);
-        // console.log("Success!");
         $(".todosTitle").html("");
           loadTitle();
     }
     }).done((user) => {
-      // console.log(user);
+      console.log("success");
     });
   })
 
