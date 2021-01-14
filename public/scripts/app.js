@@ -26,7 +26,7 @@ $(() => {
       },
       success: function(res) {
         // console.log(res);
-        // console.log("Sucess!");
+        // console.log("Success!");
         $(".todosTitle").html("");
           loadTitle();
     }
@@ -34,10 +34,12 @@ $(() => {
       console.log(user);
     });
   })
+
   const createTitleElement = function(objData) {
-    const markup = `<div class="tasks" id='title'>
+    const iconMarkup = `<i data-id="${objData.title}" class="fas fa-trash-alt"></i>`
+    const markup = `<div class="tasks" data-id="title">
     ${objData.title}
-      <i class="fas fa-trash-alt"></i>
+      ${iconMarkup}
       <i class="fas fa-check"></i>
   </div>`
   return markup;
@@ -48,7 +50,8 @@ $(() => {
     for (let i in titles) {
       $(".todosTitle").prepend(createTitleElement(titles[i]));
     }
-  };
+};
+
   const loadTitle = () => {
     $.ajax({
       type: "GET",
@@ -61,13 +64,48 @@ $(() => {
   loadTitle();
 
 
+  //delete task
+  $(document).on('click', '.fa-trash-alt', function(e) {
+    e.preventDefault();
+
+    const title = $('this').parent().attr('data-id');
+    
+    console.log($(this).attr('data-id'));
+  });
 
 
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "/home",
+  //     data: {
+  //       todo_title: addTitle,
+  //       add_category: category,
+  //       date: start_date
+  //     },
+  //     success: function(res) {
+  //       // console.log(res);
+  //       // console.log("Sucess!");
+  //       $(".todosTitle").html("");
+  //         loadTitle();
+  //   }
+  //   }).done((user) => {
+  //     console.log(user);
+  //   });
+  // })
+
+//   const createTitleElement = function(objData) {
+//     const markup = `<div class="tasks" id='title'>
+//     ${objData.title}
+//       <i class="fas fa-trash-alt"></i>
+//       <i class="fas fa-check"></i>
+//   </div>`
+//   return markup;
+//   }
+//   const renderTitle = function(titles) {
+
+//     $(".todosTitle").empty();
+//     for (let i in titles) {
+//       $(".todosTitle").prepend(createTitleElement(titles[i]));
+//     }
+// };
 });
-
-
-
-
-
-
-

@@ -38,7 +38,7 @@ module.exports = (db) => {
 
 router.get('/', (req, res)=>{
     db.query(`
-    SELECT title
+    SELECT id, title
     FROM todos
     `).then((data)=>{
       const title = data.rows;
