@@ -18,23 +18,17 @@ module.exports = (db) => {
     const addTask = req.body.addTask;
     let category = req.body.category;
     const start_date = String(req.body.start_date);
+    taskInfo.fetchTaskInfo(addTask, category, (info) => {
     db.query(`
-    INSERT INTO todos(user_id, title, category_id, start_date)
-    VALUES(1, $1, $2, $3)
+    INSERT INTO todos(user_id, title, category_id, start_date, img_url)
+    VALUES(1, $1, $2, $3, $4)
     RETURNING *;
-    `,[addTask, category, start_date]);
-
-      //belongs in post route
-      taskInfo.fetchTaskInfo(newTodo, newCategory, (info) => {
-      db.query(`
-        INSERT INTO todos(title, category_id, start_date, img_url)
-        VALUES($1, $2, $3, $4);
-      `, [newTodo, newCategory, start_date, info.img_url]);
-    });
+    `,[addTask, category, start_date, info.img_url]);
     res.redirect('/');
-
-    //grabs title from todos table and loops through each title name
   })
+})
+
+
 
 
 
