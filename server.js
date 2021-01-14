@@ -47,6 +47,7 @@ const loginRoute = require('./routes/login.js');
 app.use("/home", indexRoutes(db));
 //"/login" path prefeix
 app.use('/login', loginRoute(db));
+// app.use('/delete', indexRoutes(db));
 
 // Home page
 app.get("/", (req, res) => {
@@ -60,6 +61,21 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
+
+app.delete('/delete/:id', (req, res) => {
+  db.query(`
+  DELETE FROM todos
+  WHERE ID = ${req.params.id};
+  `).then(() => {
+    res.json({ message: 'successfully deleted'})
+  }).catch(err => {
+    res.json({ message: 'ID failed to delete.', errors: err })
+  });
+});
+
+
+app.post("")
+
 // module.exports = renderTaskElm = (task) => {
 //   const taskList = $('.tasks');
 //   taskList.append(createTaskElement(task));
@@ -69,4 +85,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
