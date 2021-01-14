@@ -5,9 +5,22 @@
 4. Effect
 */
 
+/* const fetchCategory = function () {
+  $.ajax({
+    type: "GET",
+    url: "/categories",
+    data: {},
+    success: function (res) {
+      console.log("fetchting categories", res[0]);
+    }
+  });
+};
+
+fetchCategory(); */
+
 $(() => {
   //target
-  $('#newTask').submit(function(event) {
+  $('#newTask').submit(function (event) {
     event.preventDefault();
 
     // console.log($('#addTask').val());
@@ -24,25 +37,25 @@ $(() => {
         add_category: category,
         date: start_date
       },
-      success: function(res) {
+      success: function (res) {
         // console.log(res);
         // console.log("Sucess!");
         $(".todosTitle").html("");
-          loadTitle();
-    }
+        loadTitle();
+      }
     }).done((user) => {
       console.log(user);
     });
   })
-  const createTitleElement = function(objData) {
+  const createTitleElement = function (objData) {
     const markup = `<div class="tasks" id='title'>
     ${objData.title}
       <i class="fas fa-trash-alt"></i>
       <i class="fas fa-check"></i>
   </div>`
-  return markup;
+    return markup;
   }
-  const renderTitle = function(titles) {
+  const renderTitle = function (titles) {
 
     $(".todosTitle").empty();
     for (let i in titles) {
@@ -53,7 +66,7 @@ $(() => {
     $.ajax({
       type: "GET",
       url: "/home",
-      success: function(data) {
+      success: function (data) {
         renderTitle(data);
       },
     });
