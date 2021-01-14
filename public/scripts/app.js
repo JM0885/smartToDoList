@@ -36,7 +36,7 @@ $(() => {
   })
 
   const createTitleElement = function(objData) {
-    const iconMarkup = `<i data-id="${objData.title}" class="fas fa-trash-alt"></i>`
+    const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="title">
     ${objData.title}
       ${iconMarkup}
@@ -68,9 +68,16 @@ $(() => {
   $(document).on('click', '.fa-trash-alt', function(e) {
     e.preventDefault();
 
-    const title = $('this').parent().attr('data-id');
-    
-    console.log($(this).attr('data-id'));
+    const id = $(e.target).attr('data-id');
+    $.ajax({
+    url: `/delete/${id}`,
+    method: 'DELETE',
+    }).then((res) => { 
+      const element = $(this).parent()
+      element.remove();
+    }).catch(err => {
+      console.log("Error, item not removed.", err);
+    });
   });
 
 

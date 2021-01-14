@@ -36,7 +36,8 @@ module.exports = (db) => {
   //grabs title from todos table and loops through each title name
 })
 
-router.get('/', (req, res)=>{
+
+router.get('/', (req, res)=> {
     db.query(`
     SELECT id, title
     FROM todos
@@ -50,6 +51,7 @@ router.get('/', (req, res)=>{
 
   return router;
 };
+
 
 
 
