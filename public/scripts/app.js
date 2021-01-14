@@ -5,10 +5,23 @@
 // 4. Effect
 // */
 
+/* const fetchCategory = function () {
+  $.ajax({
+    type: "GET",
+    url: "/categories",
+    data: {},
+    success: function (res) {
+      console.log("fetchting categories", res[0]);
+    }
+  });
+};
+
+fetchCategory(); */
+
 $(() => {
 
   //target
-  $('#newTask').submit(function(event) {
+  $('#newTask').submit(function (event) {
     event.preventDefault();
     const addTask = $('#addTask').val();
     $("#addTask").val("");
@@ -22,25 +35,34 @@ $(() => {
         category: category,
         start_date: start_date
       },
+
       success: function(res) {
         $(".todosTitle").html("");
-          loadTitle();
-    }
+        loadTitle();
+      }
     }).done((user) => {
       console.log("success");
     });
   })
 
+
   const createTitleElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="${objData.category_id}">
+
     ${objData.title}
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`
+<<<<<<< HEAD
   return markup;
   }
+=======
+>>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
 
+    return markup;
+  }
+  
   const createCompletedElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="comptasks" data-id="${objData.category_id}">
@@ -53,20 +75,45 @@ $(() => {
   const renderTitle = function(titles) {
     $(".todosTitle").empty();
     for (let i in titles) {
+      if (titles[i].end_date === null) {
+        console.log("Executed1");
       $(".todosTitle").prepend(createTitleElement(titles[i]));
+<<<<<<< HEAD
+=======
+      }
+>>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
     }
+};
+
+const renderCompleted = function(task) {
+  $(".completedTitle").empty();
+  console.log("Task " + task[0].end_date);
+  for (let i in task) {
+    if (task[i].end_date !== null) {
+      console.log("Executed");
+    $(".completedTitle").prepend(createCompletedElement(task[i]));
+    }
+  }
 };
 
   const loadTitle = () => {
     $.ajax({
       type: "GET",
       url: "/home",
-      success: function(data) {
+      success: function (data) {
         renderTitle(data);
+<<<<<<< HEAD
+=======
+        renderCompleted(data);
+        console.log(data);
+>>>>>>> 7f8ae2a4707eb603bc3b28a1bf18bb09664c0b4a
       },
     });
   };
   loadTitle();
+
+
+
 
 
   $('#categoriesCard2').on('change',function(event) {
