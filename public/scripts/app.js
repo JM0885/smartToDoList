@@ -62,8 +62,6 @@ $(() => {
 
   loadTitle();
 
-
-
   $('#categoriesCard2').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
@@ -75,7 +73,4 @@ $(() => {
         }
       });
   })
-
-
-
 });
