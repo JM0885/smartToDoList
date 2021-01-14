@@ -64,6 +64,19 @@ $(() => {
   loadTitle();
 
 
+  $('#categoriesCard2').on('change',function(event) {
+    event.preventDefault();
+    const tasks = $('#categoriesCard2').val();
+      $(".todosTitle .tasks").each(function() {
+        const category = $(this).attr("data-id");
+        $(this).removeClass("hidden");
+        if(category !== tasks){
+          $(this).addClass("hidden");
+        }
+      });
+  })
+
+
   //delete task
   $(document).on('click', '.fa-trash-alt', function(e) {
     e.preventDefault();
@@ -79,4 +92,5 @@ $(() => {
       console.log("Error, item not removed.", err);
     });
   });
+
 });
