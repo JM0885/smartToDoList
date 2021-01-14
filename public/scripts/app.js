@@ -11,7 +11,7 @@ $(() => {
     event.preventDefault();
 
     // console.log($('#addTask').val());
-    const addTitle = $('#addTask').val();
+    const addTask = $('#addTask').val();
     $("#addTask").val("");
     const category = $('#categoriesCard1').val();
     const start_date = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -20,24 +20,22 @@ $(() => {
       type: "POST",
       url: "/home",
       data: {
-        todo_title: addTitle,
-        add_category: category,
-        date: start_date
+        addTask: addTask,
+        category: category,
+        start_date: start_date
       },
       success: function(res) {
-        // console.log(res);
-        // console.log("Success!");
+
         $(".todosTitle").html("");
           loadTitle();
     }
-    }).done((user) => {
-      console.log(user);
+    }).done(() => {
+      console.log("done");
     });
   })
 
   const createTitleElement = function(objData) {
-    const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
-    const markup = `<div class="tasks" data-id="title">
+
     ${objData.title}
       ${iconMarkup}
       <i class="fas fa-check"></i>
@@ -45,12 +43,12 @@ $(() => {
   return markup;
   }
   const renderTitle = function(titles) {
-
+    // console.log(titles);
     $(".todosTitle").empty();
     for (let i in titles) {
       $(".todosTitle").prepend(createTitleElement(titles[i]));
     }
-};
+
 
   const loadTitle = () => {
     $.ajax({
@@ -61,22 +59,4 @@ $(() => {
       },
     });
   };
-  loadTitle();
 
-
-  //delete task
-  $(document).on('click', '.fa-trash-alt', function(e) {
-    e.preventDefault();
-
-    const id = $(e.target).attr('data-id');
-    $.ajax({
-    url: `/delete/${id}`,
-    method: 'DELETE',
-    }).then((res) => { 
-      const element = $(this).parent()
-      element.remove();
-    }).catch(err => {
-      console.log("Error, item not removed.", err);
-    });
-  });
-});
