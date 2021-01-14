@@ -28,5 +28,5 @@ module.exports = (db) => {
 
   // router.post("/home/:id", ())
 
-  // return router;
+  return router;
 };

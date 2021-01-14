@@ -42,8 +42,9 @@ $(() => {
       ${iconMarkup}
       <i class="fas fa-check"></i>
   </div>`
-  return markup;
+  return markup; 
   }
+
   const renderTitle = function(titles) {
     $(".todosTitle").empty();
     for (let i in titles) {
