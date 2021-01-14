@@ -55,9 +55,22 @@ $(() => {
   const renderTitle = function(titles) {
     $(".todosTitle").empty();
     for (let i in titles) {
+      if (titles[i].end_date === null) {
+        console.log("Executed1");
       $(".todosTitle").prepend(createTitleElement(titles[i]));
-      console.log(titles[i]);
+      }
     }
+};
+
+const renderCompleted = function(task) {
+  $(".completedTitle").empty();
+  console.log("Task " + task[0].end_date);
+  for (let i in task) {
+    if (task[i].end_date !== null) {
+      console.log("Executed");
+    $(".completedTitle").prepend(createCompletedElement(task[i]));
+    }
+  }
 };
 
   const loadTitle = () => {
@@ -66,11 +79,15 @@ $(() => {
       url: "/home",
       success: function(data) {
         renderTitle(data);
+        renderCompleted(data);
         console.log(data);
       },
     });
   };
   loadTitle();
+
+
+
 
 
   $('#categoriesCard2').on('change',function(event) {
