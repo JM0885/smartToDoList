@@ -16,7 +16,7 @@ const cookieSession = require('cookie-session');
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
-db.connect(console.log('SUCCESS! YOU HAVE CONNECTED!'));
+db.connect();
 
 app.use(cookieSession({
   name: 'session',
@@ -41,12 +41,15 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 const indexRoutes = require('./routes/index.js');
 const loginRoute = require('./routes/login.js');
+//const categoriesRoute = require('./routes/categories.js');
 
 
 //"/home" path prefeix
 app.use("/home", indexRoutes(db));
 //"/login" path prefeix
 app.use('/login', loginRoute(db));
+//"/categories" path prefix
+//app.use("/categories", categoriesRoute(db));
 
 // Home page
 app.get("/", (req, res) => {
