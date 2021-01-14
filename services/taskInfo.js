@@ -115,10 +115,13 @@ function fetchTaskInfo(title, category, cb)  {
 
       let result = JSON.parse(e);
       console.log(result);
-
-      result.docs[0].author_name.forEach(function(element){
-          console.log(element);
+      cb({
+        img_url: null
       });
+
+      /* result.docs[0].author_name.forEach(function(element){
+          console.log(element);
+      }); */
     });
   };
 
@@ -126,7 +129,9 @@ function fetchTaskInfo(title, category, cb)  {
     fetchRestaurant(title, function(e){
       let result = JSON.parse(e);
       console.log(result);
-      console.log(result.location_suggestions[0].title);
+      cb({
+        img_url: null
+      });
     });
   };
 };
