@@ -5,10 +5,23 @@
 // 4. Effect
 // */
 
+/* const fetchCategory = function () {
+  $.ajax({
+    type: "GET",
+    url: "/categories",
+    data: {},
+    success: function (res) {
+      console.log("fetchting categories", res[0]);
+    }
+  });
+};
+
+fetchCategory(); */
+
 $(() => {
 
   //target
-  $('#newTask').submit(function(event) {
+  $('#newTask').submit(function (event) {
     event.preventDefault();
 
     // console.log($('#addTask').val());
@@ -24,25 +37,29 @@ $(() => {
         category: category,
         start_date: start_date
       },
+
       success: function(res) {
         $(".todosTitle").html("");
-          loadTitle();
-    }
+        loadTitle();
+      }
     }).done((user) => {
       console.log("success");
     });
   })
 
+
   const createTitleElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="${objData.category_id}">
+
     ${objData.title}
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`
-  return markup; 
-  }
 
+    return markup;
+  }
+  
   const createCompletedElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="comptasks" data-id="${objData.category_id}">
@@ -77,7 +94,7 @@ const renderCompleted = function(task) {
     $.ajax({
       type: "GET",
       url: "/home",
-      success: function(data) {
+      success: function (data) {
         renderTitle(data);
         renderCompleted(data);
         console.log(data);
