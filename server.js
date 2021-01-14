@@ -44,12 +44,16 @@ const loginRoute = require('./routes/login.js');
 //const categoriesRoute = require('./routes/categories.js');
 
 
-//"/home" path prefeix
+//"/home" path prefix
 app.use("/home", indexRoutes(db));
-//"/login" path prefeix
+//"/login" path prefix
 app.use('/login', loginRoute(db));
+
 //"/categories" path prefix
 //app.use("/categories", categoriesRoute(db));
+
+// app.use('/delete', indexRoutes(db));
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -63,6 +67,35 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
+
+app.delete('/delete/:id', (req, res) => {
+  db.query(`
+  DELETE FROM todos
+  WHERE ID = ${req.params.id};
+  `).then(() => {
+    res.json({ message: 'successfully deleted'})
+  }).catch(err => {
+    res.json({ message: 'ID failed to delete.', errors: err })
+  });
+});
+
+
+app.post('/complete/:id', (req, res) => {
+  db.query(`
+  UPDATE todos
+  SET end_date = NOW()
+  WHERE ID = ${req.params.id}
+  RETURNING *;
+  `).then((result) => {
+    res.json( result.rows[0] )
+  }).catch(err => {
+    res.json({ message: 'Update not completed.', errors: err })
+  });
+});
+
+
+app.post("")
+
 // module.exports = renderTaskElm = (task) => {
 //   const taskList = $('.tasks');
 //   taskList.append(createTaskElement(task));
@@ -72,4 +105,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-

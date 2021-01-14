@@ -73,13 +73,13 @@ h4 {
     padding: 0;
     box-sizing: inherit;
   }
-  
+
   .container {
     display: flex;
     justify-content: center;
-    
+
   }
-  
+
   .card {
     margin: 1.5rem;
     width: 500px;
@@ -108,7 +108,7 @@ h4 {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 8px;
       margin-top: 0;
-    } 
+    }
 
     .list-title {
       display: flex;
@@ -140,13 +140,28 @@ h4 {
       font-size: 1.5em;
       padding-top: .5em;
       margin-left: .5em;
+      outline: none;
+    }
+
+    .todosTitle {
+      width:90%;
+      background: none;
+      padding: 0;
+      margin: 0;
+      overflow: scroll;
+    }
+
+    .completedTitle {
+      width:90%;
+      background: none;
+      padding: 0;
+      margin: 0;
+      overflow: scroll;
     }
 
     .tasks {
-      width: 85%;
       background: rgba(255, 255, 255, 0.5);
       padding: 18px;
-      margin: 6 px 0;
       margin-bottom: 5px;
       margin-top: 3px;
       border-radius: 15px;
@@ -163,8 +178,10 @@ h4 {
       transform: translateX(-3px);
     }
 
+    .hidden {
+      display: none;
+      }
     .comptasks {
-      width: 85%;
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
       padding: 18px;
@@ -184,7 +201,7 @@ h4 {
     .comptasks:hover {
       transform: translateX(-3px);
     }
-  
+
     .title {
       color: white;
       margin: 1rem;
@@ -193,16 +210,16 @@ h4 {
       transition: .2s;
       cursor: pointer;
     }
-    
+
     .desc {
       text-align: center;
     }
-    
+
     .actions {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      
+
       button {
         padding: .5rem .8rem;
         cursor: pointer;
@@ -211,52 +228,51 @@ h4 {
         text-transform: uppercase;
         outline: 0;
         transition: background-color .4s, color .4s, transform .1s;
-        
+
         &:hover {
           color: white;
           box-shadow: 0 0 24px rgba(black, .2);
         }
-        
+
         &:active {
           transform: scale(0.95);
           box-shadow: 0 0 16px rgba(black, .3);
         }
       }
-      
+
       &__like {
         &:hover {
           background-color: #00b16a;
         }
       }
-      
+
           &__cancel {
         &:hover {
           background-color: #c0392b;
         }
       }
     }
-  
+
   p {
     margin-top: 1rem;
     color: #000000;
   }
-  
+
   a:link,
   a:visited {
     text-decoration: none;
     color: #2574a9;
   }
-  
+
   .active {
     background-color: #00b16a;
   }
-  
-  
-  
+
+
+
   button::-moz-focus-inner {
     border: 0;
   }
 
 }
 }
-
