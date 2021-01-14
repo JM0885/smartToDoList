@@ -5,7 +5,9 @@ INSERT INTO todos(
   start_date,
   end_date,
   accomplished,
-  api_id
+  api_id,
+  img_url,
+  info_url
 )
 VALUES(
   2,
@@ -14,5 +16,7 @@ VALUES(
   '2008-01-01 00:00:01',
   NULL,
   FALSE,
-  '118'
+  '118',
+  NULL,
+  NULL
 );
