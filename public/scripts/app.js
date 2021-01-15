@@ -22,7 +22,7 @@ $(() => {
         start_date: start_date
       },
 
-      success: function(res) {
+      success: function (res) {
         $(".todosTitle").html("");
         loadTitle();
       }
@@ -31,52 +31,87 @@ $(() => {
     });
   })
 
-//template markup for task list
-  const createTitleElement = function(objData) {
-    const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
-    const markup = `<div class="tasks" data-id="${objData.category_id}">
+  //template markup for task list
+  //category dependent info is interpolated
+  const createTitleElement = function (objData) {
+    if (objData.category_id === 1) {
+      const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
+      const markup = `<div class="tasks" data-id="${objData.category_id}">
     ${objData.title}
     <img class="img-hover" src="${objData.img_url}" alt="update" loading="lazy">
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
-  </div>`
-  return markup;
-  }
+  </div>`;
+      return markup;
+
+    } else if (objData.category_id === 2){
+            const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
+      const markup = `<div class="tasks" data-id="${objData.category_id}">
+    ${objData.title}
+    <a href=${objData.info_url}>
+    <img class="img-hover" src="${objData.img_url}" alt="update" loading="lazy">
+    </a>
+      ${iconMarkup}
+      <i data-id="${objData.id}" class="fas fa-check"></i>
+  </div>`;
+      return markup;
+
+    } else if (objData.category_id === 3) {
+      const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
+      const markup = `<div class="tasks" data-id="${objData.category_id}">
+    ${objData.title}
+    <div>By ${objData.author}</div>
+      ${iconMarkup}
+      <i data-id="${objData.id}" class="fas fa-check"></i>
+  </div>`;
+      return markup;
+
+    } else if (objData.category_id === 4) {
+      const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
+      const markup = `<div class="tasks" data-id="${objData.category_id}">
+    ${objData.title}
+    <div>${objData.resto_title}</div>
+      ${iconMarkup}
+      <i data-id="${objData.id}" class="fas fa-check"></i>
+  </div>`;
+      return markup;
+    }
+  };
 
   //template markup for completed tasks
-  const createCompletedElement = function(objData) {
+  const createCompletedElement = function (objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="comptasks" data-id="${objData.category_id}">
     ${objData.title}
       ${iconMarkup}
   </div>`
-  return markup;
+    return markup;
   }
 
   //renders task list
-  const renderTitle = function(titles) {
+  const renderTitle = function (titles) {
     $(".todosTitle").empty();
     let todoCount = 0;
-    console.log("titles",titles)
+    console.log("titles", titles)
     for (let i in titles) {
       if (titles[i].end_date === null && titles[i].title !== '' && titles[i].title !== null) {
-      $(".todosTitle").prepend(createTitleElement(titles[i]));
-      todoCount++;
+        $(".todosTitle").prepend(createTitleElement(titles[i]));
+        todoCount++;
       }
     }
     $todoCount.text(todoCount);
     return titles;
-};
+  };
 
-//renders completed tasks
-const renderCompleted = function(task) {
-  $(".completedTitle").empty();
-  for (let i in task) {
-    if (task[i].end_date !== null) {
-    $(".completedTitle").prepend(createCompletedElement(task[i]));
+  //renders completed tasks
+  const renderCompleted = function (task) {
+    $(".completedTitle").empty();
+    for (let i in task) {
+      if (task[i].end_date !== null) {
+        $(".completedTitle").prepend(createCompletedElement(task[i]));
+      }
     }
-  }
-};
+  };
 
   const loadTitle = () => {
     $.ajax({
@@ -91,48 +126,48 @@ const renderCompleted = function(task) {
   loadTitle();
 
   //sorts task list
-  $('#categoriesCard2').on('change',function(event) {
+  $('#categoriesCard2').on('change', function (event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
     console.log("TASKS;", tasks);
-    $(".todosTitle .tasks").each(function() {
+    $(".todosTitle .tasks").each(function () {
       const category = $(this).attr("data-id");
-      if(tasks === 'all'){
+      if (tasks === 'all') {
         $(this).removeClass("hidden");
-      }else if (category !== tasks){
-          $(this).addClass("hidden");
-        }else{
-          $(this).removeClass("hidden");
-        }
-      });
+      } else if (category !== tasks) {
+        $(this).addClass("hidden");
+      } else {
+        $(this).removeClass("hidden");
+      }
+    });
   })
 
   //sorts completed tasks
-  $('#categoriesCard3').on('change',function(event) {
+  $('#categoriesCard3').on('change', function (event) {
     event.preventDefault();
     const tasks = $('#categoriesCard3').val();
     console.log("Tasks", tasks);
-    $(".completedTitle .comptasks").each(function() {
+    $(".completedTitle .comptasks").each(function () {
       const category = $(this).attr("data-id");
-      if(tasks === 'all'){
+      if (tasks === 'all') {
         $(this).removeClass("hidden");
-      }else if (category !== tasks){
-          $(this).addClass("hidden");
-        }else{
-          $(this).removeClass("hidden");
-        }
-      });
+      } else if (category !== tasks) {
+        $(this).addClass("hidden");
+      } else {
+        $(this).removeClass("hidden");
+      }
+    });
   })
 
 
   //delete task
-  $(document).on('click', '.fa-trash-alt', function(e) {
+  $(document).on('click', '.fa-trash-alt', function (e) {
     e.preventDefault();
 
     const id = $(e.target).attr('data-id');
     $.ajax({
-    url: `/delete/${id}`,
-    method: 'DELETE',
+      url: `/delete/${id}`,
+      method: 'DELETE',
     }).then((res) => {
       const element = $(this).parent()
       element.remove();
@@ -143,13 +178,13 @@ const renderCompleted = function(task) {
   });
 
   //completed task
-  $(document).on('click', '.fa-check', function(e) {
+  $(document).on('click', '.fa-check', function (e) {
     e.preventDefault();
 
     const id = $(e.target).attr('data-id');
     $.ajax({
-    url: `/complete/${id}`,
-    method: 'POST',
+      url: `/complete/${id}`,
+      method: 'POST',
     }).then((task) => {
       const element = $(this).parent()
       element.remove();
