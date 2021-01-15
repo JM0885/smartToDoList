@@ -78,7 +78,6 @@ $(() => {
 
 const renderCompleted = function(task) {
   $(".completedTitle").empty();
-  console.log("Task " + task[0].end_date);
   for (let i in task) {
     if (task[i].end_date !== null) {
     $(".completedTitle").prepend(createCompletedElement(task[i]));
