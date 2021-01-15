@@ -10,6 +10,7 @@ $(() => {
   $('#newTask').submit(function (event) {
     event.preventDefault();
     const addTask = $('#addTask').val();
+    console.log(addTask);
     $("#addTask").val("");
     const category = $('#categoriesCard1').val();
     const start_date = new Date().toISOString().slice(0, 19).replace('T', ' ');
