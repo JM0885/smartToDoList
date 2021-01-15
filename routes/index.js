@@ -6,48 +6,38 @@
  */
 
 const express = require('express');
-const router  = express.Router();
-
-
+const router = express.Router();
+const taskInfo = require('../services/taskInfo.js')
+const dbParams = require('../lib/db.js');
+const renderTaskElm = require('../server.js');
+const { fetchTaskInfo } = require('../services/taskInfo.js');
 
 module.exports = (db) => {
+
   router.post('/', (req, res)=>{
     const addTask = req.body.addTask;
     let category = req.body.category;
     const start_date = String(req.body.start_date);
-    //adds category title to database and returns category_id
-
-    // switch(category){
-    //   case 'Movies':
-    //     category = 1;
-    //   break;
-    //   case 'Shows':
-    //     category = 2;
-    //   break;
-    //   case 'Books':
-    //     category = 3;
-    //   break;
-    //   case 'Restaurants':
-    //     category = 4;
-    //   break;
-    // }
-    //
+    taskInfo.fetchTaskInfo(addTask, category, (info) => {
     db.query(`
-    INSERT INTO todos(user_id, title, category_id, start_date)
-    VALUES(1, $1, $2, $3)
+    INSERT INTO todos(user_id, title, category_id, start_date, img_url)
+    VALUES(1, $1, $2, $3, $4)
     RETURNING *;
-    `,[addTask, category, start_date]);
+    `,[addTask, category, start_date, info.img_url]);
     res.redirect('/');
-
-  //grabs title from todos table and loops through each title name
+  })
 })
 
 
+
+
+
 router.get('/', (req, res)=> {
+
     db.query(`
     SELECT *
     FROM todos
-    `).then((data)=>{
+    `).then((data) => {
       const title = data.rows;
       res.json(title);
 

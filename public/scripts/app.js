@@ -5,13 +5,24 @@
 // 4. Effect
 // */
 
+/* const fetchCategory = function () {
+  $.ajax({
+    type: "GET",
+    url: "/categories",
+    data: {},
+    success: function (res) {
+      console.log("fetchting categories", res[0]);
+    }
+  });
+};
+
+fetchCategory(); */
+
 $(() => {
 
   //target
-  $('#newTask').submit(function(event) {
+  $('#newTask').submit(function (event) {
     event.preventDefault();
-
-    // console.log($('#addTask').val());
     const addTask = $('#addTask').val();
     $("#addTask").val("");
     const category = $('#categoriesCard1').val();
@@ -24,25 +35,26 @@ $(() => {
         category: category,
         start_date: start_date
       },
+
       success: function(res) {
-        // console.log(res);
-        // console.log("Success!");
         $(".todosTitle").html("");
-          loadTitle();
-    }
+        loadTitle();
+      }
     }).done((user) => {
-      // console.log(user);
+      console.log("success");
     });
   })
+
 
   const createTitleElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="${objData.category_id}">
+
     ${objData.title}
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`
-  return markup; 
+  return markup;
   }
 
   const createCompletedElement = function(objData) {
@@ -51,7 +63,7 @@ $(() => {
     ${objData.title}
       ${iconMarkup}
   </div>`
-  return markup; 
+  return markup;
   }
 
   const renderTitle = function(titles) {
@@ -68,7 +80,6 @@ const renderCompleted = function(task) {
   $(".completedTitle").empty();
   for (let i in task) {
     if (task[i].end_date !== null) {
-      console.log("Executed");
     $(".completedTitle").prepend(createCompletedElement(task[i]));
     }
   }
@@ -78,7 +89,7 @@ const renderCompleted = function(task) {
     $.ajax({
       type: "GET",
       url: "/home",
-      success: function(data) {
+      success: function (data) {
         renderTitle(data);
         renderCompleted(data);
         console.log(data);
@@ -94,16 +105,30 @@ const renderCompleted = function(task) {
   $('#categoriesCard2').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
-    console.log("tasks", tasks);
+    console.log("TASKS;", tasks);
     $(".todosTitle .tasks").each(function() {
       const category = $(this).attr("data-id");
-      console.log("THIS", this);
-      if(category !== tasks){
+      if(tasks === 'all'){
+        $(this).removeClass("hidden");
+      }else if (category !== tasks){
           $(this).addClass("hidden");
-          console.log("Category hidden",category);
         }else{
           $(this).removeClass("hidden");
-          console.log("Category Not Hidden", category);
+        }
+      });
+  })
+  $('#categoriesCard3').on('change',function(event) {
+    event.preventDefault();
+    const tasks = $('#categoriesCard3').val();
+    console.log("Tasks", tasks);
+    $(".completedTitle .comptasks").each(function() {
+      const category = $(this).attr("data-id");
+      if(tasks === 'all'){
+        $(this).removeClass("hidden");
+      }else if (category !== tasks){
+          $(this).addClass("hidden");
+        }else{
+          $(this).removeClass("hidden");
         }
       });
   })
