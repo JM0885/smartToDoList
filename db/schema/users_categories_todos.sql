@@ -27,5 +27,7 @@ end_date TIMESTAMP,
 accomplished BOOLEAN,
 api_id VARCHAR(255),
 img_url VARCHAR(255),
-info_url VARCHAR(255)
+info_url VARCHAR(255),
+author VARCHAR(255),
+resto_title VARCHAR(255)
 );
