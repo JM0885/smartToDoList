@@ -35,6 +35,7 @@ module.exports = (db) => {
 
 
 
+
 router.get('/', (req, res)=> {
 
     db.query(`
@@ -43,7 +44,6 @@ router.get('/', (req, res)=> {
     `).then((data) => {
       const title = data.rows;
       res.json(title);
-
     })
 
   })

@@ -5,22 +5,8 @@
 // 4. Effect
 // */
 
-/* const fetchCategory = function () {
-  $.ajax({
-    type: "GET",
-    url: "/categories",
-    data: {},
-    success: function (res) {
-      console.log("fetchting categories", res[0]);
-    }
-  });
-};
-
-fetchCategory(); */
-
 $(() => {
-
-  //target
+  const $todoCount = $(".todo-count");
   $('#newTask').submit(function (event) {
     event.preventDefault();
     const addTask = $('#addTask').val();
@@ -45,7 +31,7 @@ $(() => {
     });
   })
 
-
+//template markup for task list
   const createTitleElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="${objData.category_id}">
@@ -57,6 +43,7 @@ $(() => {
   return markup;
   }
 
+  //template markup for completed tasks
   const createCompletedElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="comptasks" data-id="${objData.category_id}">
@@ -66,16 +53,22 @@ $(() => {
   return markup;
   }
 
+  //renders task list
   const renderTitle = function(titles) {
     $(".todosTitle").empty();
+    let todoCount = 0;
+    console.log("titles",titles)
     for (let i in titles) {
-      if (titles[i].end_date === null) {
-        console.log("Executed1");
+      if (titles[i].end_date === null && titles[i].title !== '' && titles[i].title !== null) {
       $(".todosTitle").prepend(createTitleElement(titles[i]));
+      todoCount++;
       }
     }
+    $todoCount.text(todoCount);
+    return titles;
 };
 
+//renders completed tasks
 const renderCompleted = function(task) {
   $(".completedTitle").empty();
   for (let i in task) {
@@ -92,16 +85,12 @@ const renderCompleted = function(task) {
       success: function (data) {
         renderTitle(data);
         renderCompleted(data);
-        console.log(data);
       },
     });
   };
   loadTitle();
 
-
-
-
-
+  //sorts task list
   $('#categoriesCard2').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard2').val();
@@ -117,6 +106,8 @@ const renderCompleted = function(task) {
         }
       });
   })
+
+  //sorts completed tasks
   $('#categoriesCard3').on('change',function(event) {
     event.preventDefault();
     const tasks = $('#categoriesCard3').val();
@@ -145,6 +136,7 @@ const renderCompleted = function(task) {
     }).then((res) => {
       const element = $(this).parent()
       element.remove();
+      loadTitle();
     }).catch(err => {
       console.log("Error, item not removed.", err);
     });
@@ -162,6 +154,7 @@ const renderCompleted = function(task) {
       const element = $(this).parent()
       element.remove();
       $(".completedTitle").prepend(createCompletedElement(task));
+      loadTitle();
     }).catch(err => {
       console.log("Error, item not removed.", err);
     });
