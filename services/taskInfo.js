@@ -1,12 +1,3 @@
-
-
-//pseudo for attaching t api info to 'todo'
-// if (todo.id === 1) {
-//   api.fetchShow(title/*will be from HTML (container)*/, body => {console.log(body.Title)});
-// }; request to API if id === 1
-
-
-
 require('dotenv').config();
 
 const request = require('request');
@@ -15,7 +6,7 @@ const ombdKey = process.env.OMDB_KEY;
 
 //-----------------------------------------------------------------
 
-//fetches tv show information, STATUS: WORKING!
+//fetches tv show information from api
 const fetchShow = function(title, cb) {
   const showInfo = {
     method: 'GET',
@@ -32,13 +23,14 @@ const fetchShow = function(title, cb) {
 
 //-------------------------------------------------------------------
 
-//fetches restaurant information, STATUS:WORKING!
+//fetches restaurant information from api
 const fetchRestaurant = function(title, cb) {
   const restaurantInfo = {
     method: 'GET',
     url: `https://developers.zomato.com/api/v2.1/locations?query=${title}`,
     headers: {'user-key': zomatoKey}
   };
+
   request(restaurantInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
@@ -48,7 +40,7 @@ const fetchRestaurant = function(title, cb) {
 
 //------------------------------------------------------------------
 
-//fetches books information, STATUS: WORKING! NEEDS LIMIT
+//fetches books information from api
 const fetchBook = function(title, cb) {
   const url = `http://openlibrary.org/search.json?title=${title}`;
 
@@ -66,13 +58,13 @@ const fetchBook = function(title, cb) {
 
 //---------------------------------------------------------------------
 
-//fetches movies information, STATUS: WORKING!
+//fetches movies information from api
 const fetchMovie = function(title, cb) {
   const movieInfo = {
     method: 'GET',
     url: `http://www.omdbapi.com/?t=${title}&apikey=${ombdKey}`
   };
-  console.log('before request to movieInfo');
+
   request(movieInfo, function(error, response, body) {
     if (error) throw new Error(error);
 
@@ -82,21 +74,16 @@ const fetchMovie = function(title, cb) {
 
 //---------------------------------------------------------------------
 
-//fetchMovie(title, info => {console.log(info)});
-
-//returns api img and url information based on the category
+//returns rlevant api information based on the category
 //based on task title
-
 
 function fetchTaskInfo(title, category, cb)  {
   console.log(title, category);
   if (category === "1") {
     fetchMovie(title, function(e){
       let result = JSON.parse(e);
-
       cb({
         img_url: result.Poster,
-        //info_url: result.URL
       });
     });
   };
@@ -105,32 +92,26 @@ function fetchTaskInfo(title, category, cb)  {
     fetchShow(title, function(e){
       let result = JSON.parse(e);
       cb({
-        img_url: result.image.medium});
+        img_url: result.image.medium,
+        info_url: result.officialSite
+      });
     });
   };
 
-  //books API being troublesome
   if (category === "3") {
     fetchBook(title, function(e){
-
       let result = JSON.parse(e);
-      console.log(result);
       cb({
-        img_url: null
+        author: result.docs[0].author_name[0]
       });
-
-      /* result.docs[0].author_name.forEach(function(element){
-          console.log(element);
-      }); */
     });
   };
 
   if (category === "4") {
     fetchRestaurant(title, function(e){
       let result = JSON.parse(e);
-      console.log(result);
       cb({
-        img_url: null
+        resto_title: result.location_suggestions[0].title
       });
     });
   };
