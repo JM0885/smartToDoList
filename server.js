@@ -47,25 +47,24 @@ const loginRoute = require('./routes/login.js');
 //"/home" path prefix
 app.use("/home", indexRoutes(db));
 //"/login" path prefix
+
 app.use('/login', loginRoute(db));
-
-//"/categories" path prefix
-//app.use("/categories", categoriesRoute(db));
-
-// app.use('/delete', indexRoutes(db));
 
 
 // Home page
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   const userId = req.session.user_id;
   db.query(`
   SELECT * FROM users
   WHERE id = $1;
   `, [userId])
   .then((data) => console.log("HERE IS THE LOGIN", data.rows))
-  const templateVars = { userId };
+  let templateVars = {
+    userId
+  };
   res.render("index", templateVars);
 });
+
 
 
 app.delete('/delete/:id', (req, res) => {
@@ -93,14 +92,6 @@ app.post('/complete/:id', (req, res) => {
   });
 });
 
-
-app.post("")
-
-// module.exports = renderTaskElm = (task) => {
-//   const taskList = $('.tasks');
-//   taskList.append(createTaskElement(task));
-//   taskList.children('.task:last-child').data(task);
-// };
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

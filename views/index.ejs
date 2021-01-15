@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
 
-    <title>toodle</title>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>toodle</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
-  <body>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
 
-    <div class="topnav">
-      <div class="login-container">
-        <form action="/login/1">
-          <h4>Hello, Pat Flowers</h4>
-          <button type="submit">Logged In</button>
-        </form>
-      </div>
+<body>
+
+  <div class="topnav">
+    <div class="login-container">
+      <form action="/login/1">
+        <h4>Hello, Pat Flowers</h4>
+        <button type="submit">Logged In</button>
+      </form>
     </div>
+  </div>
 
-    <h1>toodle</h1>
+  <h1>toodle</h1>
 
-    <!-- Add Task List -->
-    <div class="container">
-      <div class="card">
-        <div class="todo-header">
+  <!-- Add Task List -->
+  <div class="container">
+    <div class="card new-task">
+      <div class="todo-header">
         <h2 class="list-title">Add a New Task</h2>
+        <!-- <span class="error1"> No task was entered... please try again</span> -->
 
-    <!-- dropdown list to filter list by category -->
-      <div class="dropdown">
-        <select id="categoriesCard1" name="categories">
-          <option value="1">Movies</option>
-          <option value="2">TV Shows</option>
-          <option value="3">Books</option>
-          <option value="4">Restaurants</option>
-        </select>
-      </div>
-    <!-- end dropdown list -->
+        <!-- dropdown list to filter list by category -->
+        <div class="dropdown">
+          <select id="categoriesCard1" name="categories">
+            <option value="1">Movies</option>
+            <option value="2">TV Shows</option>
+            <option value="3">Books</option>
+            <option value="4">Restaurants</option>
+          </select>
+        </div>
+        <!-- end dropdown list -->
 
         <p class="desc">What do you want to accomplish?</p>
       </div>
-      <form action="/" id = "newTask">
+      <form action="/" id="newTask">
         <input type="text" id="addTask" name="addtask" placeholder="Write a new task here...">
         <button class="btn-task" aria-label="create new task">+</button>
-        </form>
-      </div>
+      </form>
+    </div>
 
     <!-- Task List -->
 
-    <div class="card">
+    <div class="card task-list">
       <div class="todo-header">
         <h2 class="list-title">Task List</h2>
+
       <!-- dropdown list to filter list by category -->
       <div class="dropdown">
         <select id="categoriesCard2" name="categories">
@@ -70,15 +73,18 @@
       </div>
       <!-- end dropdown list -->
 
-      <p class="desc">You have 3 tasks left to accomplish</p>
-    </div>
-    <article class="todosTitle">
-       <!-- <div class="tasks">
+        <p class="desc">You have <strong class="todo-count">0</strong> tasks left to accomplish</p>
+
+      </div>
+      <!-- <div class="todo-body"> -->
+        <article class="todosTitle">
+          <!-- <div class="tasks">
             <i class="fas fa-trash-alt"></i>
             <i class="fas fa-check"></i>
         </div> -->
-      </article>
-      </div>
+        </article>
+      <!-- </div> -->
+    </div>
 
       <!-- Completed Tasks List -->
       <div class="card">
@@ -97,15 +103,16 @@
       </div>
       <!-- end dropdown list -->
 
-      <p class="desc">See what you've accomplished!</p>
+        <p class="desc">See what you've accomplished!</p>
       </div>
       <article class="completedTitle">
-      <!-- <div class="comptasks"> -->
+        <!-- <div class="comptasks"> -->
         <!-- <i class="fas fa-trash-alt"></i> -->
-      <!-- </div> -->
+        <!-- </div> -->
       </article>
-      </div>
     </div>
-   </section>
-  </body>
+  </div>
+  </section>
+</body>
+
 </html>
