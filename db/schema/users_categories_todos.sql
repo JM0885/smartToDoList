@@ -24,7 +24,6 @@ FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
 title VARCHAR(255),
 start_date TIMESTAMP,
 end_date TIMESTAMP,
-accomplished BOOLEAN,
 api_id VARCHAR(255),
 img_url VARCHAR(255),
 info_url VARCHAR(255)
