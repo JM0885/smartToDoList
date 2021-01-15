@@ -7,7 +7,9 @@ INSERT INTO todos(
   accomplished,
   api_id,
   img_url,
-  info_url
+  info_url,
+  author,
+  resto_title
 )
 VALUES(
   2,
@@ -17,6 +19,8 @@ VALUES(
   NULL,
   FALSE,
   '118',
+  NULL,
+  NULL,
   NULL,
   NULL
 );
