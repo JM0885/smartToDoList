@@ -35,8 +35,8 @@ $(() => {
   const createTitleElement = function(objData) {
     const iconMarkup = `<i data-id="${objData.id}" class="fas fa-trash-alt"></i>`
     const markup = `<div class="tasks" data-id="${objData.category_id}">
-
     ${objData.title}
+    <img class="img-hover" src="${objData.img_url}" alt="update" loading="lazy">
       ${iconMarkup}
       <i data-id="${objData.id}" class="fas fa-check"></i>
   </div>`

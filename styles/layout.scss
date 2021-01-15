@@ -93,7 +93,7 @@ h4 {
     align-items: center;
     transition: .2s;
     background-image: linear-gradient(240deg, rgb(220, 221, 231), #f1e20a);
-    min-height: 70%;
+    // min-height: 70%;
 
     &:hover {
       transform: translateY(-5px);
@@ -175,6 +175,21 @@ h4 {
 
     .tasks:hover {
       transform: translateX(-3px);
+      
+    }
+
+    .tasks:hover > .img-hover {
+      opacity: 1;
+      display: block;
+      height: 500px;
+      width: 300px;
+    }
+
+
+    .img-hover {
+      display: none;
+      opacity: 0;
+      transition: 0.3s ease opacity;
     }
 
     .hidden {
